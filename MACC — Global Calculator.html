@@ -1,0 +1,922 @@
+
+<!-- saved from url=(0028)https://tamc.github.io/macc/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Probably always a good idea to be utf-8 -->
+ 
+<!-- This prevents Internet Explorer from entering 'quirks' mode -->
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<!-- So iPads can view the app in full screen -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<!-- <link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'> -->
+<title>MACC — Global Calculator</title>
+<!-- assets is a function definied in the Helper module in src/server.rb --> 
+<script src="./MACC — Global Calculator_files/d3.min.js.download" type="text/javascript"></script><style id="speechify-theme">:root { --speechify-bg-prim-w-b: #ffffff;
+--speechify-bg-prim-w-110: #ffffff;
+--speechify-bg-prim-w-100: #ffffff;
+--speechify-bg-prim-w-90: #ffffff;
+--speechify-bg-prim-w-80: #ffffff;
+--speechify-bg-prim-w-70: #ffffff;
+--speechify-bg-prim-inv-b-w: #000000;
+--speechify-bg-prim-cta: #2f43fa;
+--speechify-bg-sec-0-110: #f5f5f5;
+--speechify-bg-sec-0-100: #f5f5f5;
+--speechify-bg-sec-0-90: #f5f5f5;
+--speechify-bg-sec-0-80: #f5f5f5;
+--speechify-bg-sec-0-70: #f5f5f5;
+--speechify-bg-sec-inv-100-0: #1f1f1f;
+--speechify-bg-sec-cta: #6977fa;
+--speechify-bg-tert-10-90: #ececec;
+--speechify-bg-tert-10-80: #ececec;
+--speechify-bg-tert-10-70: #ececec;
+--speechify-bg-tert-20-60: #e0e0e0;
+--speechify-bg-tert-inv-60-20: #3d3d3d;
+--speechify-bg-tert-inv-80-10: #2e2e2e;
+--speechify-bg-accent: #f0f1ff;
+--speechify-bg-blue: #f0f1ff;
+--speechify-bg-alert: #fff1de;
+--speechify-bg-success: #e6fcee;
+--speechify-bg-crit: #ffe7e5;
+--speechify-bg-dimmer: rgba(24, 24, 28, 0.6);
+--speechify-brdr-prim-10-100: #ececec;
+--speechify-brdr-prim-10-80: #ececec;
+--speechify-brdr-prim-inv-80-10: #2e2e2e;
+--speechify-brdr-prim-hov: #e0e0e0;
+--speechify-brdr-prim-foc: #1f1f1f;
+--speechify-brdr-prim-cta: #2f43fa;
+--speechify-brdr-sec-20-60: #e0e0e0;
+--speechify-brdr-sec-cta: #6977fa;
+--speechify-brdr-blue: #2f43fa;
+--speechify-brdr-tert-40-50: #9f9f9f;
+--speechify-brdr-crit: #ff3c30;
+--speechify-brdr-quat-30-70: #bfbfbf;
+--speechify-sf-prim-cta: #2f43fa;
+--speechify-sf-prim-cta-hov: #3143e0;
+--speechify-sf-prim-cta-pres: #2c3bc7;
+--speechify-sf-prim-w-b: #ffffff;
+--speechify-sf-prim-hov-w-b: #f5f5f5;
+--speechify-sf-prim-pres-w-b: #ececec;
+--speechify-sf-prim-w-110: #ffffff;
+--speechify-sf-prim-hov-w-110: #f5f5f5;
+--speechify-sf-prim-pres-w-110: #ececec;
+--speechify-sf-prim-w-100: #ffffff;
+--speechify-sf-prim-hov-w-100: #f5f5f5;
+--speechify-sf-prim-pres-w-100: #ececec;
+--speechify-sf-prim-w-90: #ffffff;
+--speechify-sf-prim-hov-w-90: #f5f5f5;
+--speechify-sf-prim-pres-w-90: #ececec;
+--speechify-sf-prim-w-80: #ffffff;
+--speechify-sf-prim-hov-w-80: #f5f5f5;
+--speechify-sf-prim-pres-w-80: #ececec;
+--speechify-sf-sec-0-110: #f5f5f5;
+--speechify-sf-sec-hov-0-110: #ececec;
+--speechify-sf-sec-pres-0-110: #e0e0e0;
+--speechify-sf-sec-0-100: #f5f5f5;
+--speechify-sf-sec-hov-0-100: #ececec;
+--speechify-sf-sec-pres-0-100: #e0e0e0;
+--speechify-sf-sec-0-80: #f5f5f5;
+--speechify-sf-sec-hov-0-80: #ececec;
+--speechify-sf-sec-pres-0-80: #e0e0e0;
+--speechify-sf-sec-0-90: #f5f5f5;
+--speechify-sf-sec-hov-0-90: #ececec;
+--speechify-sf-sec-pres-0-90: #e0e0e0;
+--speechify-sf-act-electric-blue: #2f43fa;
+--speechify-sf-act-blue: #f0f1ff;
+--speechify-sf-act-blue-60: #f0f1ff;
+--speechify-sf-act-blue-70: #e0e0e0;
+--speechify-sf-act-blue-80: #f0f1ff;
+--speechify-sf-crit: #ff3c30;
+--speechify-sf-crit-hov: #ed4c42;
+--speechify-sf-crit-pres: #db463d;
+--speechify-sf-prim-cta-electric-w: #4759f7;
+--speechify-sf-prim-cta-hov-electric-w: #4454e3;
+--speechify-sf-prim-cta-pres-electric-w: #3d4ac4;
+--speechify-icn-txt-white: #ffffff;
+--speechify-icn-txt-black: #000000;
+--speechify-icn-txt-prim: #000000;
+--speechify-icn-txt-prim-inv: #ffffff;
+--speechify-icn-txt-sec: #7a7a7a;
+--speechify-icn-txt-tert: #9f9f9f;
+--speechify-icn-txt-quat: #bfbfbf;
+--speechify-icn-txt-prim-electric: #2f43fa;
+--speechify-icn-txt-accent: #2f43fa;
+--speechify-icn-txt-blue: #2f43fa;
+--speechify-icn-txt-success: #00c270;
+--speechify-icn-txt-alert: #ff9500;
+--speechify-icn-txt-crit: #ff3c30;
+--speechify-hglt-prim: var(--speechify-hglt-default-prim);
+--speechify-hglt-sec: var(--speechify-hglt-default-sec);
+--speechify-hglt-hov-sec: #fff1de;
+--speechify-logo-speechify-logo: #2f43fa;
+--speechify-logo-speechify-logo-txt: #000000;
+--speechify-hglt-default-prim: #abb3fe;
+--speechify-hglt-default-sec: #e0e3ff;
+--speechify-hglt-pink-prim: #f093fc;
+--speechify-hglt-pink-sec: #fadafe;
+--speechify-hglt-red-prim: #ff7570;
+--speechify-hglt-red-sec: #ffe0dc;
+--speechify-hglt-orange-prim: #fbb559;
+--speechify-hglt-orange-sec: #feeace;
+--speechify-hglt-green-prim: #5de9a5;
+--speechify-hglt-green-sec: #c7fde8;
+--speechify-bg-toolbar-preview: transparent;
+--speechify-toolbar-star-icon: #5F6368;
+--speechify-toolbar-preview-background: transparent;
+--speechify-toolbar-preview-color: #5F6368;
+--speechify-toolbar-spacer-background: #F1F3F4;
+--speechify-toolbar-spacer-color: #5F6368;
+--speechify-toolbar-separator: #DCDCDC;
+--speechify-hglt-prim-light: #abb3fe;
+--speechify-hglt-sec-light: #e0e3ff;
+--speechify-hglt-prim-dark: #5666f0;
+--speechify-hglt-sec-dark: #444766; }</style>
+<style>
+body {
+  font-family: 'Lato', sans-serif;
+}
+h1, #name, #chart, .controls {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+#chart {
+  margin-top: 50px;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+rect.box.hover {
+  fill: #f00;
+  cursor: pointer;
+}
+
+text.label.hover {
+  transition: fill 1s;
+  fill: #f00;
+  cursor: pointer;
+}
+
+line.label.hover {
+  transition: stroke 1s;
+  stroke: #f00;
+}
+
+rect {
+  transition: fill 1s;
+  fill-opacity: 0.5;
+  stroke: #555;
+  stroke-opacity: 0.5;
+  shape-rendering: crispEdges;
+}
+
+rect.demographics {
+  fill: #1f77b4;
+}
+
+rect.lifestyle {
+  fill: #ff7f0e;
+}
+
+rect.efficiency {
+  fill: #2ca02c;
+}
+
+rect.fuel {
+  fill: #17becf;
+}
+
+rect.ccs {
+  fill: #9467bd;
+}
+
+rect.ggr {
+  fill: #8c564b;
+}
+
+rect.bio {
+  fill: #e377c2;
+}
+
+line.label {
+  stroke: #ccc;
+  shape-rendering: crispEdges;
+}
+
+text.label {
+  fill: #777;
+  text-anchor: end;
+}
+
+text.shadow {
+  fill: white;
+  stroke: white;
+  stroke-width: 3px;
+  text-anchor: end;
+}
+
+text.quadrant {
+  fill: grey;
+  font-size: 9px;
+}
+
+text.right {
+  text-anchor: end;
+}
+
+text.rightlabel {
+  text-anchor: start;
+}
+
+
+div#infobox {
+  transition: fill 1s;
+  transition: color 1s;
+  background-color: rgba(255,255,255,0);
+  color: rgba(0,0,0,0);
+  position: fixed;
+  padding: 10px;
+  right: 0px;
+  bottom: 0px;
+}
+
+div#infobox.show {
+  background-color: rgba(255,255,255,0.7);
+  color: rgba(0,0,0,1);
+}
+
+#tsv {
+  width: 97%;
+  height: 200px;
+}
+
+#show_hide {
+  cursor: pointer;
+  font-size: 8px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#show_hide:hover {
+  text-decoration: underline;
+}
+
+#inputs.hidden {
+  display: none;
+}
+
+  </style></head><div style="display: none; background-color: canvas;"></div>
+
+  <body>
+  <div id="show_hide">Hide inputs</div>
+  <div id="inputs">
+  <h1>Marginal Abatement Cost Curve chart drawing</h1>
+  <p>
+  Paste tab separated data in as "<code>Name [TAB] Category [TAB] Abatement potential [TAB] Cost [NEWLINE]</code>". 
+  There shouldn't be a header row. Tab separated data is what you get if you copy and paste from Excel.
+  </p>
+  <textarea id="tsv">Thing 1	Category 1	6	-12
+Thing 2	Category 2	10	10
+Thing 3	Category 1	5	100
+Thing 4	Category 2	-5	10
+Thing 5	Category 1	-15	-25
+  </textarea>
+  <br>
+  <input type="submit" id="clear" value="clear data">
+  <p>x axis name<input value="MtCO2e in 2025" id="x_axis_name"></p>
+  <p>y axis name<input value="£2011/tCO2e" id="y_axis_name"></p>
+  <p>incremental cost name<input value="£M" id="incremental_cost_name"></p>
+  <p>Minimum width for label to be displayed <input value="20" id="minimum_pixels_for_label"> in pixels (zero means label every box)</p>
+  <p>Minimum y to display <input value="" id="y_min"> (leave blank for automatic scaling)</p>
+  <p>Maximum y to display <input value="" id="y_max"> (leave blank for automatic scaling)</p>
+  <p>Width <input value="" id="chart_width"> in pixels (leave blank for automatic scaling)</p>
+  <p>Height <input value="" id="chart_height"> in pixels (leave blank for automatic scaling)</p>
+  <p>Margin top <input value="50" id="margin_top"> in pixels (increase if the labels go off of the top)</p>
+  <p>Margin bottom <input value="50" id="margin_bottom"> in pixels (increase if the labels go off of the bottom)</p>
+  <input type="submit" id="go" value="Redraw chart">
+</div>
+<div id="chart"> <svg width="1920" height="911"><g transform="translate(100,50)"><g id="boxlayer"><rect class="box" data-name="Thing 1" style="fill:#1f77b4" height="73.72727272727275" y="737.2727272727273" width="229.33333333333326" x="764.4444444444445"></rect><rect class="box" data-name="Thing 2" style="fill:#ff7f0e" height="36.863636363636374" y="700.4090909090909" width="382.22222222222206" x="993.7777777777777"></rect><rect class="box" data-name="Thing 3" style="fill:#1f77b4" height="737.2727272727273" y="0" width="191.1111111111111" x="1376"></rect><rect class="box" data-name="Thing 4" style="fill:#ff7f0e" height="73.72727272727275" y="663.5454545454545" width="191.1111111111111" x="0"></rect><rect class="box" data-name="Thing 5" style="fill:#1f77b4" height="61.439393939393995" y="737.2727272727273" width="573.3333333333334" x="191.11111111111111"></rect></g><g id="axislayer"><g class="y axis" transform="translate(764.4444444444445,0)"><g class="tick" transform="translate(0,811)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">-2</text></g><g class="tick" transform="translate(0,737.2727272727273)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">0</text></g><g class="tick" transform="translate(0,663.5454545454545)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">2</text></g><g class="tick" transform="translate(0,589.8181818181819)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">4</text></g><g class="tick" transform="translate(0,516.0909090909091)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">6</text></g><g class="tick" transform="translate(0,442.3636363636363)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">8</text></g><g class="tick" transform="translate(0,368.6363636363637)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">10</text></g><g class="tick" transform="translate(0,294.90909090909093)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">12</text></g><g class="tick" transform="translate(0,221.18181818181816)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">14</text></g><g class="tick" transform="translate(0,147.4545454545454)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">16</text></g><g class="tick" transform="translate(0,73.72727272727275)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">18</text></g><g class="tick" transform="translate(0,0)" style="opacity: 1;"><line x2="-6" y2="0"></line><text dy=".32em" x="-9" y="0" style="text-anchor: end;">20</text></g><path class="domain" d="M-6,0H0V811H-6"></path></g><g class="x axis" transform="translate(0, 737.2727272727273)"><g class="tick" transform="translate(0,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">-20</text></g><g class="tick" transform="translate(191.11111111111111,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">-15</text></g><g class="tick" transform="translate(382.22222222222223,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">-10</text></g><g class="tick" transform="translate(573.3333333333333,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">-5</text></g><g class="tick" transform="translate(764.4444444444445,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">0</text></g><g class="tick" transform="translate(955.5555555555555,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">5</text></g><g class="tick" transform="translate(1146.6666666666665,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">10</text></g><g class="tick" transform="translate(1337.7777777777778,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">15</text></g><g class="tick" transform="translate(1528.888888888889,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">20</text></g><g class="tick" transform="translate(1720,0)" style="opacity: 1;"><line y2="6" x2="0"></line><text dy=".71em" y="9" x="0" style="text-anchor: middle;">25</text></g><path class="domain" d="M0,6V0H1720V6"></path></g><text class="ylabel" y="-12" x="717.4444444444445">£2011/tCO2e</text><text class="xlabel" text-anchor="end" x="1720" y="779.2727272727273">MtCO2e in 2025</text></g><g id="legendlayer"><g class="legend"><rect width="20" height="20" fill="#1f77b4" x="1700" y="836"></rect><text text-anchor="end" x="1695" y="850">Category 1</text></g><g class="legend"><rect width="20" height="20" fill="#ff7f0e" x="1700" y="811"></rect><text text-anchor="end" x="1695" y="825">Category 2</text></g></g><g id="shadowlayer"><text class="shadow rightlabel" y="840.0000000000001" x="879.1111111111111">Thing 1</text><text class="shadow" y="691.409090909091" x="1184.888888888889">Thing 2</text><text class="shadow" y="-9.000000000000053" x="1471.5555555555554">Thing 3</text><text class="shadow rightlabel" y="654.5454545454545" x="95.55555555555556">Thing 4</text><text class="shadow" y="827.7121212121214" x="477.77777777777777">Thing 5</text></g><g id="labellayer"><text class="label rightlabel" x="879.1111111111111" y="840.0000000000001">Thing 1</text><text class="label" x="1184.888888888889" y="691.409090909091">Thing 2</text><text class="label" x="1471.5555555555554" y="-9.000000000000053">Thing 3</text><text class="label rightlabel" x="95.55555555555556" y="654.5454545454545">Thing 4</text><text class="label" x="477.77777777777777" y="827.7121212121214">Thing 5</text></g><g id="linelayer"><line class="label" x1="879.1111111111111" x2="879.1111111111111" y1="813" y2="825.0000000000001"></line><line class="label" x1="1184.888888888889" x2="1184.888888888889" y1="698.4090909090909" y2="696.409090909091"></line><line class="label" x1="1471.5555555555554" x2="1471.5555555555554" y1="-2" y2="-4.000000000000053"></line><line class="label" x1="95.55555555555556" x2="95.55555555555556" y1="661.5454545454545" y2="659.5454545454545"></line><line class="label" x1="477.77777777777777" x2="477.77777777777777" y1="800.7121212121212" y2="812.7121212121214"></line></g></g></svg></div>
+<div id="infobox" class=""></div>
+<script>
+
+function zero_nans(n) {
+  if(typeof n != 'number') { return 0; }
+  if(isNaN(n)) { return 0; }
+  return n;
+}
+
+// Expects data to have a specified delta_x and delta_y and returns
+// it with a series of x, y, w and h attributes, where:
+// w is abs(delta_x), h is abs(delta_y/abs(delta_x)) x and y are the top left
+// corners of a rectangle, so that the rectangles are sorted
+// in order of increasing h, and so that w and h never have 
+// to be negative (because svg doesn't allow rectangles with
+// negative widths or heights).
+d3.layout.macc = function() {
+  var values = function(d) { return d; }, // d3_identity,
+      label_minimum_gap = 10,
+      delta_x_minimum_for_label = 0,
+      out = d3_layout_macc_out,
+      delta_x = d3_layout_macc_delta_x,
+      delta_y = d3_layout_macc_delta_y,
+      x_domain = [0,0],
+      always_include_label = d3_layout_macc_always_include_label,
+      h = d3_layout_macc_h; // In case want to do something else than h = abs(delta_y/delta_x)
+
+  function macc(data) {
+
+    // Convert series to canonical two-dimensional representation
+    var series = data.map(function(d,i) {
+          return values.call(macc, d, i);
+        });
+
+    // Convert each series to canonical [[d,delta_x,delta_y,h]] representation
+    // where h = y/x and d is the original datum
+    var points = series.map(function(d,i) {
+          var new_delta_x = zero_nans(delta_x.call(macc, d, i)), 
+              new_delta_y = zero_nans(delta_y.call(macc, d, i)),
+              new_h = zero_nans(h.call(macc, d, i, new_delta_x, new_delta_y));
+          return [d, new_delta_x, new_delta_y, new_h];
+        });
+
+    // Now need to sort the data. We want items with the most
+    // negative h to be closest to x = 0. Because the delta_x values
+    // might be negative, that means sliceting into positive
+    // and negative groups
+    var negative_delta_x = [],
+        positive_delta_x = [],
+        n = points.length,
+        i,
+        p;
+
+    for(i=0; i < n; ++i) {
+      p = points[i]
+      if(p[1] < 0) { // delta_x is negative
+        negative_delta_x.push(p);
+      } else {
+        positive_delta_x.push(p);
+      }
+    }
+
+    // Now we sort the negative and positive groups
+    negative_delta_x.sort(function(a,b) { return a[3] - b[3]; }); // Sorting by h
+    positive_delta_x.sort(function(a,b) { return a[3] - b[3]; }); // Sorting by h
+
+    // Now we work out the x values, turning the points into the form [[d, delta_x, delta_y, h, x]]
+    var x = 0;
+    negative_delta_x = negative_delta_x.map(function(d,i) {
+        x = x + d[1]; // Do the addition first, so x is top left of rect
+        d.push(x);
+        return d;
+        });
+
+    x_domain[0] = x;
+
+    x = 0;
+    positive_delta_x = positive_delta_x.map(function(d,i) {
+        d.push(x);
+        x = x + d[1]; // Do the addition second, so x is the top left of the rec
+        return d;
+        });
+
+    x_domain[1] = x;
+
+    // Now we slice the groups again, according to whether they have negative or positive h
+    var negative_delta_x_negative_h,
+        negative_delta_x_positive_h,
+        positive_delta_x_negative_h,
+        positive_delta_x_positive_h;
+
+    n = negative_delta_x.length;
+    for(i=0; i<n; ++i) {
+      if(negative_delta_x[i][3]>0) { break; }
+    };
+    negative_delta_x_negative_h = negative_delta_x.slice(0,i);
+    negative_delta_x_positive_h = negative_delta_x.slice(i,n);
+
+    n = positive_delta_x.length;
+    for(i=0; i<n; ++i) {
+      if(positive_delta_x[i][3]>0) { break; }
+    };
+    positive_delta_x_negative_h = positive_delta_x.slice(0,i);
+    positive_delta_x_positive_h = positive_delta_x.slice(i,n);
+
+    var minimum_space_between_label_and_block = label_minimum_gap/5;
+
+    // now negative_delta_x_positive_h, top left is at h
+    // working backwards to align labels
+    var label_y = 0;
+    n = negative_delta_x_positive_h.length;
+    for(i=0; i<n; ++i) {
+      p = negative_delta_x_positive_h[i];
+      if(always_include_label(p[0]) || (-p[1]>delta_x_minimum_for_label)) {
+        if((p[3]-label_y)<label_minimum_gap) {
+          label_y = label_y + label_minimum_gap;
+        } else {
+          label_y = p[3] + minimum_space_between_label_and_block;
+        }
+      }
+      out.call(macc, p[0], p[4], p[3], -p[1], p[3], label_y, true); // d, x, y, w, h, label_y
+    };
+
+    // Now negative_delta_x_negative_h, top left is on the axis
+    label_y = 0;
+    n = negative_delta_x_negative_h.length;
+    for(i=n-1; i>=0; --i) {
+      p = negative_delta_x_negative_h[i];
+      if(always_include_label(p[0]) || (-p[1]>delta_x_minimum_for_label)) {
+        if(-(p[3]-label_y)<label_minimum_gap) {
+          label_y = label_y - label_minimum_gap;
+        } else {
+          label_y = p[3] - minimum_space_between_label_and_block;
+        }
+      }
+      out.call(macc, p[0], p[4], 0, -p[1], -p[3], label_y - label_minimum_gap, false); // d, x, y, w, h, label_y
+    };
+
+    // Now postive_delta_x_postive_h
+    // making sure the y is top left (in this case h above the axis)
+    label_y = 0;
+    n = positive_delta_x_positive_h.length;
+    for(i=0; i<n; ++i) {
+      p = positive_delta_x_positive_h[i];
+      if(always_include_label(p[0]) || (p[1]>delta_x_minimum_for_label)) {
+        if((p[3]-label_y)<label_minimum_gap) {
+          label_y = label_y + label_minimum_gap;
+        } else {
+          label_y = p[3] + minimum_space_between_label_and_block;
+        }
+      }
+      out.call(macc, p[0], p[4], p[3], p[1], p[3], label_y, false); // d, x, y, w, h, label_y, label_to_right
+    };
+
+    // Now positive_delta_x_negative_h, top left is on the axis
+    // working backwards to align labels
+    label_y = 0;
+    n = positive_delta_x_negative_h.length;
+    for(i=n-1; i>=0; --i) {
+      p = positive_delta_x_negative_h[i];
+      if(always_include_label(p[0]) || (p[1]>delta_x_minimum_for_label)) {
+        if(-(p[3]-label_y)<label_minimum_gap) {
+          label_y = label_y - label_minimum_gap;
+        } else {
+          label_y = p[3] - minimum_space_between_label_and_block;
+        }
+      }
+      out.call(macc, p[0], p[4], 0, p[1], -p[3], label_y - label_minimum_gap, true); // d, x, y, w, h, label_y
+    };
+
+      
+    return data;
+  }
+
+  macc.values = function(z) {
+    if (!arguments.length) return values;
+    values = z;
+    return macc;
+  };
+
+  macc.delta_x = function(z) {
+    if (!arguments.length) return delta_x;
+    delta_x = z;
+    return macc;
+  };
+
+  macc.delta_y = function(z) {
+    if (!arguments.length) return delta_y;
+    delta_y = z;
+    return macc;
+  };
+
+  macc.h = function(z) {
+    if (!arguments.length) return y;
+    h = z;
+    return macc;
+  };
+
+  macc.out = function(z) {
+    if (!arguments.length) return out;
+    out = z;
+    return macc;
+  };
+
+  macc.x_domain = function() {
+    return x_domain;
+  }
+
+  // The minimum vertical space for the labels
+  macc.label_minimum_gap = function(z) {
+    if (!arguments.length) return label_minimum_gap;
+    label_minimum_gap = z;
+    return macc;
+  };
+
+  // If delta_x is less than this minimum, then no
+  // space is left for the label, except if the function below returns true
+  macc.delta_x_minimum_for_label = function(z) {
+    if (!arguments.length) return delta_x_minimum_for_label;
+    delta_x_minimum_for_label = z;
+    return macc;
+  };
+
+  macc.always_include_label = function(z) {
+    if (!arguments.length) return always_include_label;
+    always_include_label = z;
+    return macc;
+  };
+
+  return macc;
+}
+
+function d3_layout_macc_delta_x(d) {
+  return d.delta_x;
+}
+
+function d3_layout_macc_delta_y(d) {
+  return d.delta_y;
+}
+  
+function d3_layout_macc_out(d, x, y, w, h, label_y, label_to_right) {
+  d.x = x;
+  d.y = y;
+  d.w = w;
+  d.h = h;
+  d.label_y = label_y;
+  d.label_y_anchor = y > 0 ? y : y-h;
+  d.label_x = x+(w/2);
+  d.label_to_right = label_to_right; // If true, label_x is to left of label, if false, label_x is to right of label
+}
+
+function d3_layout_macc_h(d, i, delta_x, delta_y) {
+  if(delta_x == 0 ) { return 0; }
+  return delta_y/Math.abs(delta_x);
+}
+
+function d3_layout_macc_always_include_label(d) {
+  return false;
+}
+
+var data = [];
+
+var x_axis_name = "";
+var y_axis_name = "";
+var incremental_cost_name = "";
+var minimum_pixels_for_label = 20;
+var user_min_y = "";
+var user_max_y = "";
+
+var format = d3.format(".0f");
+
+var margin = {top: 300, right: 100, bottom: 300, left: 100},
+    width = window.innerWidth - margin.left - margin.right,
+    height = window.innerHeight - margin.top - margin.bottom;
+
+var x = d3.scale.linear()
+    .domain([0,300])
+    .range([0, width]);
+
+var y = d3.scale.linear()
+    .domain([-500,500])
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var delta_x_minimum_for_label = x.invert(minimum_pixels_for_label)-x.invert(0);
+
+var highlighted_rect = undefined;
+
+var maccLayout = d3.layout.macc()
+    .delta_x(function(d) { return d.abatement })
+    .delta_y(function(d) { return d.incremental_cost; })
+    .delta_x_minimum_for_label(delta_x_minimum_for_label)
+    .always_include_label(function(d) { return d == highlighted_rect; });
+
+function show_label(d) {
+  return (d == highlighted_rect) || (d.w > delta_x_minimum_for_label)
+}
+
+function label_y_position(d) {
+  var desired_y = y(d.label_y)+(d.label_y < 0 ? 5 : -5);
+  return desired_y;
+}
+
+function draw_macc() { 
+
+  x.range([0,width]);
+  y.range([height, 0]);
+  
+  delta_x_minimum_for_label = x.invert(minimum_pixels_for_label)-x.invert(0);
+
+  data = maccLayout(data);
+
+  // Get the x range in the data
+  data_x_domain = maccLayout.x_domain();
+  // And the y range in the data
+  data_y_domain = d3.extent(data.map(function(d) { return (d.incremental_cost/d.abatement); }));
+
+  // Allow the user to override
+  if(user_min_y != "") { data_y_domain[0] = +user_min_y; }
+  if(user_max_y != "") { data_y_domain[1] = +user_max_y; }
+
+  // Now change the axis to something nice that encompasses that range
+  x.domain(data_x_domain).nice();
+  y.domain(data_y_domain).nice();
+  // Now rework out how much space we have for drawing labels
+  delta_x_minimum_for_label = x.invert(minimum_pixels_for_label)-x.invert(0);
+  maccLayout.delta_x_minimum_for_label(delta_x_minimum_for_label);
+  maccLayout.label_minimum_gap(y.invert(0)-y.invert(20));  
+  // And sadly, we now need to rework the maccLayout
+  data = maccLayout(data);
+  
+  var svg = d3.select("#chart").selectAll('svg').data([data]);
+
+  var gEnter = svg.enter().append("svg").append("g")
+
+  svg
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+
+  gEnter
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg = svg.select('g');
+
+  svg
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // Arrange some groups in the right order
+  gEnter.append("g").attr("id", "boxlayer");
+  gEnter.append("g").attr("id", "axislayer");
+  gEnter.append("g").attr("id", "legendlayer");
+  gEnter.append("g").attr("id", "shadowlayer");
+  gEnter.append("g").attr("id", "labellayer");
+  gEnter.append("g").attr("id", "linelayer");
+
+  // Lay out the boxes
+  var rects = svg.select("g#boxlayer").selectAll("rect.box")
+    .data(data, function(d) { return d.id; });
+
+  rects.exit().remove();
+
+  rects.enter().append("rect")
+    .attr("class", "box")
+    .attr("data-name", function(d) { return d.name; })
+    .on('mouseover', function(d) { highlighted_rect = d; draw_macc(); })
+    .on('mouseout', function(d) { highlighted_rect = undefined; draw_macc(); });
+  
+  rects
+    .classed("hover", function(d) { return d == highlighted_rect; })
+    .attr("style", function(d) { return "fill:"+category_colours(d.category); })
+  .transition()
+    .attr("x", function(d) { return x(d.x); })
+    .attr("width", function(d) { return x(d.w)-x(0) })
+    .attr("y", function(d) { return y(d.y); })
+    .attr("height", function(d) { return  y(0)-y(d.h); });
+
+  // Axes next, so they are in front of rects but behind labels
+  var axisLayer = gEnter.select("g#axislayer");
+
+  axisLayer.append("g").attr("class", "y axis")
+    .attr("transform", "translate(" + x(0) + ",0)")
+    .call(yAxis);
+
+  axisLayer.append("g").attr("class", "x axis")
+    .attr("transform", "translate(0, " + y(0) + ")")
+    .call(xAxis);
+
+  svg.select(".y.axis").transition()
+    .attr("transform", "translate(" + x(0) + ",0)")
+    .call(yAxis);
+
+  svg.select(".x.axis").transition()
+    .attr("transform", "translate(0, " + y(0) + ")")
+    .call(xAxis);
+
+  axisLayer.append("text")
+    .classed("ylabel", true)
+    .text(y_axis_name)
+    .attr("y", y.range()[1]-12);
+
+  svg.select('.ylabel').transition()
+    .text(y_axis_name)
+    .attr("y", y.range()[1]-12)
+    .attr("x", x(0)-47);
+
+  axisLayer.append("text")
+    .classed("xlabel", true)
+    .attr("text-anchor", "end")
+    .attr("x", x.range()[1]-41)
+    .attr("y", y(0)+42);
+
+  svg.select('.xlabel').transition()
+    .text(x_axis_name)
+    .attr("x", x.range()[1])
+    .attr("y", y(0)+42);
+
+  // Now we lay out some shadow labels (so that the labels stand out)
+
+  var shadows = svg.select("g#shadowlayer").selectAll("text.shadow")
+    .data(function(data) { return data.filter(show_label); }, function(d) { return d.id; });
+
+  shadows.exit().remove();
+
+  shadows.enter().append('text')
+    .classed('shadow', true);
+
+  shadows
+    .order()
+    .classed("rightlabel", function(d) { return d.label_to_right })
+    .text(function(d) { return d.name; })
+    .transition() 
+    .attr("x", function(d) { return x(d.label_x); })
+    .attr("y", label_y_position);
+
+  // Now we lay out the actual labels
+
+  var labels = svg.select("g#labellayer").selectAll("text.label")
+    .data(function(data) { return data.filter(show_label); }, function(d) { return d.id; });
+
+  labels.exit().remove();
+
+  labels.enter().append('text')
+    .classed('label', true)
+    .on('mouseover', function(d) { highlighted_rect = d; draw_macc(); })
+    .on('mouseout', function(d) { highlighted_rect = undefined; draw_macc(); })
+    .on('click', function(d) { set(d.code); })
+    .attr("x", function(d) { return x(d.label_x); })
+    .attr("y", label_y_position);
+
+  labels
+    .order()
+    .classed("hover", function(d) { return d == highlighted_rect; })
+    .classed("rightlabel", function(d) { return d.label_to_right })
+    .text(function(d) { return d.name; })
+    .transition() 
+    .attr("x", function(d) { return x(d.label_x); })
+    .attr("y", label_y_position);
+
+  // Now we lay ou the lines connecting the rect to the label
+  var lines = svg.select("g#linelayer").selectAll("line.label")
+    .data(function(data) { return data.filter(show_label); }, function(d) { return d.id; });
+
+  lines.exit().remove();
+
+  lines.enter().append('line')
+    .classed('label', true)
+    .attr("x1", function(d) { return x(d.label_x); })
+    .attr("x2", function(d) { return x(d.label_x); })
+    .attr("y1", function(d) { return y(d.label_y_anchor)+(d.label_y_anchor < 0 ? 2 : -2); })
+    .attr("y2", function(d) { return y(d.label_y)+(d.label_y < 0 ? -10 : 0 ); });
+
+  lines
+    .classed("hover", function(d) { return d == highlighted_rect; })
+    .transition()
+    .attr("x1", function(d) { return x(d.label_x); })
+    .attr("x2", function(d) { return x(d.label_x); })
+    .attr("y1", function(d) { return y(d.label_y_anchor)+(d.label_y_anchor < 0 ? 2 : -2); })
+    .attr("y2", function(d) { return y(d.label_y)+(d.label_y < 0 ? -10 : 0 ); });
+
+  // Now add info box
+  if(highlighted_rect != undefined ) {
+    var emissions_direction = highlighted_rect.abatement > 0 ? "reduces" : "increases";
+    var costs_direction = highlighted_rect.incremental_cost > 0 ? "increases" : "reduces";
+    d3.select("#infobox").html(
+        ""+highlighted_rect.name+" "+
+        emissions_direction+" emissions by "+format(Math.abs(highlighted_rect.abatement))+"&thinsp;"+x_axis_name+" and "+
+        costs_direction+" costs by "+format(Math.abs(highlighted_rect.incremental_cost))+"&thinsp;"+incremental_cost_name+" (equivalent to "+
+        format(highlighted_rect.incremental_cost/Math.abs(highlighted_rect.abatement))+"&thinsp;"+y_axis_name+")"
+        )
+      .classed("show", true);
+  } else {
+    d3.select("#infobox").text("").classed("show",false);
+  }
+
+  // Now the legend
+  var legends = svg.select("g#legendlayer").selectAll("g.legend")
+    .data(categories.values());
+
+  legends.exit().remove();
+
+  var new_legends = legends.enter().append("g").classed("legend",true);
+
+  new_legends.append("rect")
+    .attr("width",20)
+    .attr("height",20);
+
+  new_legends.append("text")
+    .attr("text-anchor", "end");
+
+  legends.select("rect")
+    .attr("fill", function(d) { return category_colours(d); })
+    .attr("x",  x.range()[1]-20)
+    .attr("y", function(d,i) { return y.range()[0]+(margin.bottom-25)-(25*i) });
+
+  legends.select("text")
+    .text(Object)
+    .attr("x", x.range()[1]-25)
+    .attr("y", function(d,i) { return y.range()[0]+(margin.bottom-25)-(25*i)+14 });
+
+
+};
+
+var category_colours = undefined;
+var id_count = 0;
+var categories = d3.set();
+
+function reformat_tsv(d) {
+  if(d.length < 4) return;
+  id_count = id_count + 1;
+   var label, category, abatement, incremental_cost;
+   label = d[0].trim();
+   category = d[1].trim();
+   abatement =  +(d[2].replace(/[,()]/g,''));
+   incremental_cost =  +(d[3].replace(/[,()]/g,''));
+   categories.add(category);
+   return {
+     id: id_count,
+     name: label,
+     category: category,
+     incremental_cost: incremental_cost,
+     abatement: abatement,
+   }
+}
+
+var data = undefined;
+
+var go = function() {
+  var tsv = d3.select('#tsv').node().value;
+  x_axis_name = d3.select('#x_axis_name').node().value;
+  y_axis_name = d3.select('#y_axis_name').node().value;
+  margin.top = +d3.select('#margin_top').node().value;
+  margin.bottom = +d3.select('#margin_bottom').node().value;
+
+  user_width = d3.select('#chart_width').node().value;
+  user_height = d3.select('#chart_height').node().value;
+
+  user_min_y = d3.select('#y_min').node().value;
+  user_max_y = d3.select('#y_max').node().value;
+
+  if(user_width == "") {
+    width = window.innerWidth - margin.left - margin.right;
+    if(width < 400) width = 400;
+  } else {
+    width = +user_width;
+  }
+
+  if(user_height == "") {
+    height = window.innerHeight - margin.top - margin.bottom;
+    if(height < 400) height = 400;
+  } else {
+    height = +user_height;
+  }
+  
+  minimum_pixels_for_label = d3.select('#minimum_pixels_for_label').node().value;
+  incremental_cost_name = d3.select('#incremental_cost_name').node().value;
+  id_count = 0;
+  categories = d3.set();
+
+  data = d3.tsv.parseRows(tsv, reformat_tsv);
+
+  if(categories.size() > 10) {
+    category_colours = d3.scale.category20();
+  } else {
+    category_colours = d3.scale.category10();
+  }
+
+  draw_macc();
+};
+
+d3.select("#go").on("click", function(){ go(); d3.event.preventDefault();} );
+d3.select("#clear").on("click", function(){ d3.select('#tsv').node().value = ""; d3.event.preventDefault(); } );
+
+var inputs_hidden = false;
+d3.select("#show_hide").on("click", function() {
+    if(inputs_hidden) {
+      d3.select("#inputs").classed("hidden", false);
+      d3.select("#show_hide").text("Hide inputs");
+      inputs_hidden = false;
+    } else {
+      d3.select("#inputs").classed("hidden", true);
+      d3.select("#show_hide").text("Show inputs");
+      inputs_hidden = true;
+    }
+  });
+
+go();
+
+
+
+    </script>
+    
+    
+<div id="speechify-global-notifications"><template shadowrootmode="open"><div id="speechify-global-notifications-root" style="position: fixed; top: 0px; left: 0px; width: 100vw; z-index: 2147483644; height: 0px;"><div class="notifications-emotion-cache-1ad7coa"></div><div class="notifications-emotion-cache-6wg75d"><div class="notifications-emotion-cache-166iudr"></div></div><style data-emotion="notifications-emotion-cache" data-s="">.notifications-emotion-cache-1ad7coa{width:100%;height:100%;-webkit-transition:opacity 0.33s cubic-bezier(0.17, 0.89, 0.32, 1.27),-webkit-transform 0.33s cubic-bezier(0.17, 0.89, 0.32, 1.27);transition:opacity 0.33s cubic-bezier(0.17, 0.89, 0.32, 1.27),transform 0.33s cubic-bezier(0.17, 0.89, 0.32, 1.27);opacity:0;-webkit-transform:translateY(-20px);-moz-transform:translateY(-20px);-ms-transform:translateY(-20px);transform:translateY(-20px);pointer-events:none;}</style><style data-emotion="notifications-emotion-cache" data-s="">.notifications-emotion-cache-6wg75d{background:var(--speechify-bg-prim-w-100);box-shadow:0px 8px 24px 0px #00000029;border-radius:20px;color:var(--speechify-icn-txt-prim);cursor:default;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;overflow:visible;pointer-events:auto;position:fixed;visibility:hidden;opacity:0;left:-4px;top:36px;}</style><style data-emotion="notifications-emotion-cache" data-s="">.notifications-emotion-cache-6wg75d.initial{-webkit-transition:none;transition:none;}</style><style data-emotion="notifications-emotion-cache" data-s="">.notifications-emotion-cache-6wg75d::before{background:var(--speechify-bg-prim-w-100);content:'';height:12px;position:absolute;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg);width:12px;top:-5px;left:20px;}</style><style data-emotion="notifications-emotion-cache" data-s="">.notifications-emotion-cache-166iudr{font-family:system-ui,sans-serif;height:100%;min-width:230px;padding:0;width:100%;}</style></div></template></div><div id="speechify-screenshot-mode" style="position: fixed; top: 0px; right: 0px; width: 100%; min-height: 100%; z-index: 2147483640; display: none !important;"><template shadowrootmode="open"><div id="speechify-screenshot-mode-root" style="width: 100%; height: 100%; position: relative;"></div></template></div><div id="speechify-scroll-to-highlight" style="position: absolute; bottom: 0px; right: 0px;"><template shadowrootmode="open"><div id="speechify-scroll-to-highlight-root" style="position: fixed; z-index: 2147483646; top: 0px; left: 50%; transform: translateX(-50%); height: fit-content; font-size: initial;"></div></template></div><div id="speechify-hover-player-shadow-root"><template shadowrootmode="open"><div id="speechify-hover-player-container"><style data-emotion="hover-player-emotion-cache" data-s="">.hover-player-emotion-cache-15wy98p{position:absolute;cursor:pointer;background:transparent;border:none;outline:none;margin:0;padding:0;pointer-events:all;left:0;top:0;width:100%;height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;}</style><style data-emotion="hover-player-emotion-cache" data-s="">@-webkit-keyframes fadeOut{from{opacity:1;}to{opacity:0;}}</style><style data-emotion="hover-player-emotion-cache" data-s="">@keyframes fadeOut{from{opacity:1;}to{opacity:0;}}</style><style data-emotion="hover-player-emotion-cache" data-s="">@-webkit-keyframes fadeIn{from{opacity:0;}to{opacity:1;}}</style><style data-emotion="hover-player-emotion-cache" data-s="">@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}</style><style data-emotion="hover-player-emotion-cache" data-s="">@-webkit-keyframes loading{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}</style><style data-emotion="hover-player-emotion-cache" data-s="">@keyframes loading{from{-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-ms-transform:rotate(0deg);transform:rotate(0deg);}to{-webkit-transform:rotate(360deg);-moz-transform:rotate(360deg);-ms-transform:rotate(360deg);transform:rotate(360deg);}}</style><style data-emotion="hover-player-emotion-cache" data-s="">.hover-player-emotion-cache-15wy98p .fadeOut{-webkit-animation-name:fadeOut;animation-name:fadeOut;-webkit-animation-duration:200ms;animation-duration:200ms;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;}</style><style data-emotion="hover-player-emotion-cache" data-s="">.hover-player-emotion-cache-15wy98p .fadeIn{-webkit-animation-name:fadeIn;animation-name:fadeIn;-webkit-animation-timing-function:ease-out;animation-timing-function:ease-out;-webkit-animation-duration:100ms;animation-duration:100ms;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;}</style><style data-emotion="hover-player-emotion-cache" data-s="">.hover-player-emotion-cache-15wy98p .icon{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;background:var(--speechify-bg-prim-w-100);color:var(--speechify-icn-txt-prim);box-shadow:0px 3px 12px 0 #0000001f;border-radius:9999px;}</style><style data-emotion="hover-player-emotion-cache" data-s="">.hover-player-emotion-cache-15wy98p .icon:hover{color:var(--speechify-icn-txt-prim-electric);}</style></div></template></div><div id="speechify-settings-modal" style="position: absolute; bottom: 0px; right: 0px;"><template shadowrootmode="open"><div id="speechify-settings-modal-root" style="position: fixed; z-index: 2147483646; top: 0px; left: 0px; height: fit-content; font-size: initial;"></div></template></div><div id="speechify-side-player-settings" style="position: fixed; top: 0px; left: 0px; width: 0px; height: 0px; z-index: 2147483647;"><template shadowrootmode="open"><div id="speechify-side-player-settings-root"></div></template></div></body></html>
